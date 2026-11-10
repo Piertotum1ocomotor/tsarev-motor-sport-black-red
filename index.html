@@ -8,7 +8,7 @@
   <meta name="description" content="ЦАРЁВ motor sport — диагностика, ТО и ремонт в Самаре. Цены на работы и запись по телефону в два филиала.">
   <title>ЦАРЁВ motor sport — автосервис в Самаре</title>
   <link rel="icon" href="assets/logo.png">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=mobile-hero">
 </head>
 <body id="top">
   <svg class="symbols" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -160,9 +160,19 @@
       <a class="top-link" href="#top">Наверх <svg aria-hidden="true"><use href="#diagonal"/></svg></a>
     </div>
   </footer>
-  <nav class="mobile-actions" aria-label="Быстрые действия">
+  <nav class="mobile-actions" aria-label="Быстрые действия" hidden>
     <a class="button glass" href="#services">Услуги и цены</a>
     <a class="button primary" href="#contacts">Запись по телефону <svg aria-hidden="true"><use href="#arrow"/></svg></a>
   </nav>
+  <script>
+    if ('IntersectionObserver' in window) {
+      const heroActions = document.querySelector('.hero-actions');
+      const mobileActions = document.querySelector('.mobile-actions');
+
+      new IntersectionObserver(([entry]) => {
+        mobileActions.hidden = entry.boundingClientRect.bottom > 0;
+      }).observe(heroActions);
+    }
+  </script>
 </body>
 </html>
